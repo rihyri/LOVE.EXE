@@ -1,0 +1,11 @@
+import { Link } from 'react-router-dom';
+import { stages } from '../data/stages';
+import { useProgress } from '../state/ProgressContext';
+import { PixelCouple } from '../components/PixelCouple';
+import { PixelIcon } from '../components/PixelIcon';
+import { ProgressBar } from '../components/ProgressBar';
+import { StageCard } from '../components/StageCard';
+export function HubPage() {
+ const { completed, reset, storageError } = useProgress();
+ return <div className="hub"><div className="page-heading"><div><span className="eyebrow">LOVE LAB / QUEST SELECT</span><h1>오늘의 주인공, <em>석현님.</em></h1><p>석현님의 생일을 축하드립니다! 원하는 퀘스트를 선택해 주세요.</p></div><span className="date-badge">NOV<br/><strong>01</strong></span></div><section className="player-panel" aria-label="플레이어 정보"><div className="player"><div className="avatar"><PixelCouple/></div><div><span className="eyebrow">PLAYER 01</span><h2>석현님 <span>LV. {completed.length+1}</span></h2><p>칭호: 혜리님의 최애 플레이어</p></div></div><ProgressBar exp={completed.length}/></section><div className="section-heading"><h2><span>✦</span> 퀘스트 보드</h2><span>SELECT YOUR NEXT ADVENTURE</span></div><div className="stage-grid">{stages.map((stage,index)=><StageCard key={stage.id} stage={stage} index={index} completed={completed.includes(stage.id)}/>)}</div><section className={`ending-card ${completed.length === 6?'unlocked':''}`} aria-label="시크릿 엔딩"><div className="ending-icon"><PixelIcon name={completed.length===6?'heart':'lock'}/></div><div><span className="eyebrow">FINAL REWARD</span><h2>시크릿 엔딩 <span>{completed.length===6?'UNLOCKED':'LOCKED'}</span></h2><p>{completed.length===6?'모든 퀘스트를 완료하셨습니다. 석현님을 위한 편지가 도착했습니다.':'6개의 퀘스트를 모두 클리어하면, 특별한 이야기가 열립니다.'}</p></div>{completed.length===6?<Link className="pixel-button primary ending-open" to="/ending">편지 열기 ♥</Link>:<span className="ending-count">{completed.length} / 6</span>}</section><div className="hub-tools"><span>ⓘ 원하는 순서로 플레이하세요. 최초 클리어 시 EXP +1, 다시 플레이도 가능합니다.</span><button className="text-button" onClick={()=>{if(window.confirm('모든 퀘스트 진행 상황과 마지막 쿠폰을 초기화하시겠습니까? 이 작업은 되돌릴 수 없습니다.')) reset();}}>진행 상황 초기화 ↺</button></div>{storageError&&<p role="status" className="storage-error">{storageError}</p>}<Link className="back-link" to="/">← 타이틀 화면으로</Link></div>;
+}

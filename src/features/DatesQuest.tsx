@@ -1,0 +1,7 @@
+import { useState } from 'react';
+import { places } from '../data/content';
+import { useProgress } from '../state/ProgressContext';
+export function DatesQuest(){const [visited,setVisited]=useState<number[]>([]);const [selected,setSelected]=useState<number|null>(null);const {clearStage}=useProgress();
+ // 세 장소의 상세 내용을 열었을 때만 클리어합니다.
+ function open(index:number){const next=[...new Set([...visited,index])];setVisited(next);setSelected(index);if(next.length===places.length)clearStage('dates');}
+ return <><p className="quest-objective">목표: 세 장소의 추억을 모두 열람해 주세요. ({visited.length}/3)</p><div className="place-grid">{places.map((place,index)=><button key={place.name} className={`place-card ${selected===index?'selected':''}`} onClick={()=>open(index)} aria-pressed={selected===index}><span className="eyebrow">TOP 0{index+1} {visited.includes(index)?'✓':''}</span><span className="place-symbol" aria-hidden="true">{['♜','▥','♧'][index]}</span><strong>{place.name}</strong><span>{place.venue}</span></button>)}</div>{selected!==null&&<article className="result-panel" aria-live="polite"><h2>{places[selected].name}</h2><p>{places[selected].comment}</p><p className="muted">{places[selected].address}</p><a className="text-button" href={`https://map.naver.com/p/search/${encodeURIComponent(places[selected].venue)}`} target="_blank" rel="noreferrer">지도에서 장소 찾아보기 ↗ (새 창)</a></article>}<p className="muted">지도는 새 창에서 확인할 수 있습니다. 장소 사진은 추후 우리의 사진으로 채울 예정입니다.</p></>;}
