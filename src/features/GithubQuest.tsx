@@ -1,5 +1,46 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { commits } from '../data/content';
 import { useProgress } from '../state/ProgressContext';
-const heart=['01100110','11111111','11111111','01111110','00111100','00011000'];
-export function GithubQuest(){const [selected,setSelected]=useState<number|null>(null);const {clearStage}=useProgress();return <><p className="quest-objective">목표: 마지막 생일 release 커밋을 열람해 주세요.</p><div className="result-panel"><span className="eyebrow">HYERI / OUR-LOVE</span><h2>우리의 일상을 커밋합니다.</h2><div className="heart-grid" role="img" aria-label="하트 모양으로 채운 연애 잔디. 실제 활동 횟수가 아닌 추억의 장식입니다.">{heart.flatMap((row,y)=>[...row].map((cell,x)=><span key={`${y}-${x}`} className={cell==='1'?`grass shade-${(x+y)%3}`:'grass'}/>))}</div><p className="muted">잔디는 실제 커밋 수가 아닌, 함께한 마음을 표현한 장식입니다.</p></div><div className="commit-list">{commits.map((commit,index)=><button className={`commit-row ${selected===index?'selected':''}`} key={commit.title} aria-pressed={selected===index} onClick={()=>{setSelected(index);if(index===commits.length-1)clearStage('github');}}><span className="commit-dot" aria-hidden="true">●</span><span><small>{commit.date}</small><strong>{commit.title}</strong></span><span aria-hidden="true">↗</span></button>)}</div>{selected!==null&&<article className="result-panel" aria-live="polite"><span className="eyebrow">COMMIT DETAILS</span><h2>{commits[selected].title}</h2><p>{commits[selected].detail}</p></article>}</>;}
+import { LoveContributions } from '../components/LoveContributions';
+import './github-quest.css';
+
+function groupLabel(date: string) {
+ const parts = date.split('.');
+ return parts.length === 3 ? `${parts[0]}년 ${Number(parts[1])}월` : date;
+}
+
+export function GithubQuest() {
+ const [selected, setSelected] = useState<number | null>(null);
+ const { clearStage } = useProgress();
+ function open(index: number) {
+  setSelected(index);
+  // Preserve the existing release-detail completion event, including replay behavior.
+  if (index === commits.length - 1) clearStage('github');
+ }
+ return <>
+  <p className="quest-objective">목표: 마지막 생일 release 커밋을 열람해 주세요.</p>
+  <header className="love-repository"><span className="eyebrow">HYERI / OUR-LOVE</span><h2>우리의 일상을 커밋합니다.</h2></header>
+  <LoveContributions/>
+  <section className="contribution-activity" aria-labelledby="contribution-activity-title">
+   <h3 id="contribution-activity-title">Contribution activity</h3>
+   <ol className="love-timeline">{commits.map((commit, index) => {
+    const group = groupLabel(commit.date);
+    const startsGroup = index === 0 || group !== groupLabel(commits[index - 1].date);
+    return <li key={commit.title}>
+     {startsGroup && <h4 className="activity-month"><span>{group}</span></h4>}
+     <div className={`activity-entry ${selected === index ? 'is-selected' : ''}`}>
+      <button className="activity-dot" aria-label={`${commit.title} 상세 보기`} aria-expanded={selected === index} aria-controls={`commit-detail-${index}`} onClick={() => open(index)}><span aria-hidden="true">♥</span></button>
+      <div className="activity-content">
+       <div className="activity-date"><span>{commit.date}</span>{index === commits.length - 1 && <span className="release-label">RELEASE</span>}</div>
+       <button className="activity-title" aria-expanded={selected === index} aria-controls={`commit-detail-${index}`} onClick={() => open(index)}>{commit.title}<span aria-hidden="true">↗</span></button>
+       <p className="activity-summary">{commit.detail}</p>
+       <div id={`commit-detail-${index}`} hidden={selected !== index} className="commit-detail" aria-live="polite">
+        {selected === index && <article><span className="eyebrow">COMMIT DETAILS</span><h2>{commit.title}</h2><p>{commit.detail}</p></article>}
+       </div>
+      </div>
+     </div>
+    </li>;
+   })}</ol>
+  </section>
+ </>;
+}
