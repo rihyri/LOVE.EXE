@@ -28,6 +28,13 @@
  :is(.quest-page,.hub,.ending-page,.placeholder) .pixel-button:hover:not(:disabled) {transform:translateY(-1px); box-shadow:3px 4px 0 #8d5576;}
 }
 /* Quest selection: open rows, a quiet player strip and a distinct final reward. */
+.navigation-button,.retry-button {display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:48px; max-width:100%; padding:12px 20px; border-radius:8px; font:inherit; font-size:14px; line-height:1.6; text-align:center; cursor:pointer; transition:background-color .15s,border-color .15s;}
+.navigation-button {border:1px solid var(--border); background:transparent; color:var(--text-secondary);}
+.navigation-button:hover {background:var(--panel); border-color:var(--muted);}
+.retry-button {border:1px solid #efafcb70; background:#efafcb12; color:var(--pink);}
+.retry-button:hover {background:#efafcb24; border-color:var(--pink);}
+.ending-page>.navigation-button {display:flex; width:fit-content; margin:24px auto 0;}
+@media(prefers-reduced-motion:reduce) {.navigation-button,.retry-button {transition:none;}}
 .hub {padding-top:48px; padding-bottom:32px;}
 .hub .page-heading {margin-bottom:32px; align-items:flex-start;}
 .hub .page-heading h1 {font-size:clamp(28px,3.5vw,38px); line-height:1.4; margin:12px 0;}
@@ -214,7 +221,7 @@
 .quest-quiz .quiz-options label.chosen {background:var(--panel); box-shadow:inset 3px 0 var(--pink);}
 .quest-quiz .quiz-options input {margin-right:8px;}
 .quest-quiz .quiz-result {padding:0; border:0; background:none;}
-.quiz-score-summary {border-top:2px solid var(--pink); padding:28px 0;}
+.quiz-score-summary {border-top:2px solid var(--yellow); padding:32px 0; text-align:center;}
 .quest-quiz .quiz-score-summary .big-score {font-size:60px!important;}
 .quest-quiz .quiz-review {margin:0 0 32px;}
 .quest-quiz .quiz-review section {position:relative; padding:24px 0 24px 18px; border-left:2px solid var(--border); margin-bottom:16px;}

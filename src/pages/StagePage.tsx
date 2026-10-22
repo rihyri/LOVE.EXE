@@ -11,6 +11,6 @@ import type { ComponentType } from 'react';
 const quests: Record<StageId, ComponentType> = { dates:DatesQuest, faker:FakerQuest, report:ReportQuest, gacha:GachaQuest, quiz:QuizQuest, github:GithubQuest };
 export function StagePage(){
  const {stageId}=useParams();const stage=stages.find(item=>item.id===stageId);
- if(!stage)return <section className="placeholder"><h1>아직 발견되지 않은 좌표입니다.</h1><Link className="pixel-button primary" to="/hub">퀘스트 보드로 돌아가기</Link></section>;
+ if(!stage)return <section className="placeholder"><h1>아직 발견되지 않은 좌표입니다.</h1><Link className="navigation-button" to="/hub">퀘스트 보드로 돌아가기</Link></section>;
  const Quest=quests[stage.id];return <QuestShell key={stage.id} stage={stage}><Quest/></QuestShell>;
 }
