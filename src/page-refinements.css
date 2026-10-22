@@ -160,17 +160,45 @@
 .conclusion-footer>strong {color:var(--pink); font-size:14px; line-height:1.8; word-break:keep-all;}
 .quest-report .report-stamp {font-size:10px; line-height:1.8; padding:8px 12px; margin:0; border-color:#efafcb66; border-radius:4px;}
 /* Capsule machine and ticket use different silhouettes. */
-.gacha-layout {display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:40px; align-items:center;}
-.quest-gacha .gacha-machine {width:100%; max-width:400px; margin:0 auto; box-shadow:4px 4px #100d1d; border-width:2px; padding:28px 20px;}
-.quest-gacha .capsule-window {box-shadow:none; border-width:1px; font-size:48px; padding:24px 12px; margin-top:24px; background:#211b35;}
-.quest-gacha .gacha-machine h2 {font-size:23px; margin:24px 0;}
-.quest-gacha .gacha-machine p {font-size:13px; line-height:1.8;}
+.gacha-layout {display:grid; grid-template-columns:minmax(0,1fr); gap:40px; align-items:start;}
+.quest-gacha .gacha-machine {width:100%; max-width:360px; margin:0 auto; box-shadow:0 18px 36px #100d1d66,inset 0 1px #ffffff12; border:1px solid #78617e; border-radius:28px 28px 18px 18px; background:linear-gradient(145deg,#423249,#2b2038); padding:20px 24px;}
+.capsule-assembly {position:relative; margin:20px auto 0; max-width:270px;}
+.capsule-lid {height:24px; width:64%; margin:0 auto -12px; border:1px solid #f9dce780; border-radius:50% 50% 7px 7px; background:linear-gradient(#f6cad9,#ba7f9c); box-shadow:0 3px 8px #0005,inset 0 2px #fff6; position:relative; z-index:2;}
+.quest-gacha .capsule-window {position:relative; height:auto; aspect-ratio:.98; margin:0; padding:0; overflow:hidden; border:3px solid #d8becd99; border-radius:34% 34% 16px 16px; background:radial-gradient(ellipse at 50% 25%,#9d99b83b,transparent 65%),linear-gradient(115deg,#d2e4ff26,#332a4055 40%,#d2e4ff18); box-shadow:inset 8px 0 18px #fff1,inset -8px -8px 24px #100d1d80,0 6px 15px #0004; font-size:initial; letter-spacing:normal;}
+.capsule-pile {position:absolute; inset:0;}
+.gacha-ball {--ball-color:#e893b5; position:absolute; width:25%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 30% 23%,#fff9,transparent 28%),linear-gradient(175deg,var(--ball-color) 0%,var(--ball-color) 49%,#fff9 50%,#e6e3ecdd 54%,#aaa1b8 100%); border:1px solid #ffffff70; box-shadow:inset -5px -7px 12px #27133444,2px 5px 8px #120b254d;}
+.ball-0 {left:5%; bottom:3%; transform:rotate(-22deg);}
+.ball-1 {left:28%; bottom:0; --ball-color:#eacb6a; transform:rotate(14deg);}
+.ball-2 {left:52%; bottom:2%; --ball-color:#85bfc6; transform:rotate(-30deg);}
+.ball-3 {left:75%; bottom:1%; --ball-color:#b49cde; transform:rotate(32deg);}
+.ball-4 {left:-3%; bottom:26%; --ball-color:#8fc5b0; transform:rotate(18deg);}
+.ball-5 {left:19%; bottom:24%; --ball-color:#a59bd5; transform:rotate(-38deg);}
+.ball-6 {left:43%; bottom:26%; transform:rotate(28deg);}
+.ball-7 {left:68%; bottom:24%; --ball-color:#e8c56b; transform:rotate(-15deg);}
+.ball-8 {left:7%; bottom:46%; --ball-color:#edb17c; transform:rotate(-15deg);}
+.ball-9 {left:32%; bottom:47%; --ball-color:#8ebacb; transform:rotate(38deg);}
+.ball-10 {left:59%; bottom:46%; --ball-color:#bba3da; transform:rotate(-28deg);}
+.ball-11 {left:45%; bottom:66%; transform:rotate(20deg);}
+.glass-shine {position:absolute; left:9%; top:12%; width:10%; height:48%; border-radius:60%; background:linear-gradient(#fff7,#fff0); transform:rotate(13deg); pointer-events:none;}
+.capsule-window-label {position:absolute; left:50%; top:35%; transform:translate(-50%,-50%) rotate(-4deg); width:76%; padding:10px 6px; background:#f5e5e3ed; border:2px solid #f7d793; border-radius:6px; box-shadow:0 4px 12px #0003; color:#614357; font:clamp(12px,2.5vw,15px) var(--pixel);}
+.capsule-window-label>span {display:block; margin-top:6px; font-size:7px; letter-spacing:.6px;}
+.capsule-console {position:relative; display:grid; grid-template-columns:minmax(0,1fr) 64px minmax(0,1fr); grid-template-areas:". crank coin" "label label label" "chute chute chute"; align-items:center; gap:10px 12px; padding:18px 20px 16px; border-radius:0 0 18px 18px; border:1px solid #e7adc34d; border-top:5px solid #b7819a; background:linear-gradient(115deg,#ce91ac,#ac6e90); box-shadow:inset 0 2px #fff3,0 6px 0 #6e4564;}
+.capsule-coin-slot {grid-area:coin; justify-self:start; margin-left:12px; width:11px; height:34px; border:3px solid #ccb7c1; border-radius:8px; background:#211b35; box-shadow:0 1px 3px #0006;}
+.capsule-crank {grid-area:crank; display:grid; place-items:center; width:60px; height:60px; margin:auto; border-radius:50%; border:5px solid #d3c5d1; background:linear-gradient(135deg,#f5edf4,#a392a6); box-shadow:0 4px 6px #542f514d,inset 0 0 0 2px #7c6883;}
+.capsule-crank>span {width:18px; height:48px; border-radius:6px; transform:rotate(38deg); background:linear-gradient(90deg,#a193a9,#f6eef7,#c6b8ce); border:1px solid #8c7b95; box-shadow:2px 2px 4px #0004;}
+.capsule-turn-label {grid-area:label; display:block; margin:4px 0 0; color:#482e46; font:8px var(--pixel); letter-spacing:1px;}
+.capsule-chute {grid-area:chute; width:64%; max-width:150px; height:54px; margin:auto; border:5px solid #e3b0c7; border-radius:26px 26px 10px 10px; background:linear-gradient(#1a1225,#38233a); box-shadow:inset 0 5px 8px #0008,0 2px #fff2;}
+.capsule-chute>span {display:block; width:70%; height:5px; margin:36px auto 0; background:#92617d; border-radius:3px;}
+.quest-gacha .gacha-machine h2 {font-size:23px; margin:48px 0 32px;}
+.quest-gacha .gacha-machine p {font-size:12px; line-height:1.7; margin-top:32px;}
 .quest-gacha .coupon {position:relative; background:none; border:0; border-top:1px dashed var(--pink); border-bottom:1px dashed var(--pink); padding:32px 0; margin:0; text-align:left;}
 .quest-gacha .coupon h2 {font-size:30px; margin:16px 0; color:var(--pink);}
 .quest-gacha .coupon p {font-size:15px;}
 .quest-gacha .coupon .coupon-date {font-size:14px; padding-top:20px; margin-top:24px; border-top:1px solid var(--border);}
 .quest-gacha .coupon .muted {font-size:13px;}
-.gacha-empty {padding:28px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); color:var(--muted); font-size:15px; line-height:1.9;}
+.gacha-empty {padding:24px 20px; text-align:center; color:var(--text-secondary); font-size:15px; line-height:1.9; background:radial-gradient(ellipse at center,#efafcb0c,transparent 72%);}
+.gacha-empty .eyebrow {color:var(--pink);}
+.gacha-empty p {margin-top:10px;}
 .reward-reveal {animation:reward-reveal .24s ease-out both;}
 @keyframes reward-reveal {from {opacity:0; transform:translateY(6px);} to {opacity:1; transform:translateY(0);}}
 /* Dataset test: progress belongs above the question, review belongs below the score. */
@@ -258,7 +286,8 @@
  .quest-report .benchmark-conclusion {padding:24px 20px; margin-top:28px;}
  .quest-report .benchmark-conclusion>p {font-size:15px;}
  .gacha-layout {grid-template-columns:1fr; gap:32px;}
- .quest-gacha .gacha-machine {max-width:360px;}
+ .quest-gacha .gacha-machine {max-width:360px; padding:20px;}
+ .capsule-console {gap:10px 12px; padding:18px 16px 16px;}
  .quest-gacha .coupon {padding:28px 0;}
  .quest-quiz .quiz-question,.quest-quiz .quiz-result {padding:0;}
  .quest-quiz .quiz-options label {font-size:15px; padding:16px;}
