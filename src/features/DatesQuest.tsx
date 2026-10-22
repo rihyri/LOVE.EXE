@@ -1,7 +1,7 @@
 ﻿import { useState } from 'react';
 import { places } from '../data/content';
 import { useProgress } from '../state/ProgressContext';
-import placeBackground from '../img/place_bg.jpeg';
+import placeBackground from '../img/place_bg.jpg';
 import placeOne from '../img/place_1.jpg';
 import placeTwo from '../img/place_2.jpg';
 import placeThree from '../img/place_3.jpg';
