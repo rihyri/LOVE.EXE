@@ -110,6 +110,26 @@
 .quest-report .benchmark-intro .pixel-button {margin:0;}
 .quest-report .benchmark-results {border:0; padding:0; background:none;}
 .quest-report .metrics {display:block; margin:0;}
+.metric-radar {margin:0; padding:28px 16px 8px; border:1px solid var(--border); background:radial-gradient(ellipse at 50% 50%,#d6b74b0c,transparent 65%);}
+.metric-radar figcaption {display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center;}
+.metric-radar figcaption>.eyebrow {color:#d9bd63;}
+.metric-radar figcaption>strong {font-size:23px;}
+.radar-legend {display:flex; align-items:center; gap:8px; font-size:12px; color:var(--text-secondary);}
+.radar-legend i {width:16px; height:9px; background:#d3b43966; border:1px solid #d3b439;}
+.radar-chart {display:block; width:100%; max-width:650px; height:auto; margin:0 auto; overflow:visible;}
+.radar-ring {fill:none; stroke:#c8bbd530; stroke-width:1;}
+.radar-ring-outer {stroke:#c8bbd580; stroke-width:1.5;}
+.radar-axis {stroke:#c8bbd530; stroke-width:1;}
+.radar-tick {fill:var(--muted); font-size:9px;}
+.radar-area {fill:#d3b43955; stroke:#d3b439; stroke-width:2; stroke-linejoin:round;}
+.radar-dot {fill:#f3d970; stroke:var(--panel); stroke-width:1.5;}
+.radar-label {fill:var(--text-secondary); font-size:13px;}
+.radar-value {fill:#f3d970; font-size:15px; font-weight:700;}
+.radar-denominator {fill:var(--muted); font-size:10px; font-weight:400;}
+.radar-pending {display:flex; align-items:center; gap:16px; padding:20px; border:1px solid var(--border); border-top:0; background:var(--panel);}
+.radar-pending-tag {flex-shrink:0; padding:5px 9px; border:1px solid #d3b43966; color:#e3c66d; font-size:11px;}
+.radar-pending strong {font-size:14px;}
+.quest-report .radar-pending p {font-size:13px; line-height:1.8; color:var(--text-secondary); margin:6px 0 0;}
 .quest-report .metric {display:grid; grid-template-columns:150px minmax(80px,1fr) 150px; gap:20px; align-items:center; border:0; border-bottom:1px solid var(--border); padding:20px 0;}
 .quest-report .metric>span {grid-column:1; font-size:15px;}
 .quest-report .metric strong {grid-column:3; grid-row:1; text-align:right; color:#acbdeb; font-size:13px;}
@@ -118,9 +138,12 @@
 .quest-report .metric meter::-webkit-meter-optimum-value {background:#acbdeb; border-radius:0;}
 .quest-report .metric meter::-moz-meter-bar {background:#acbdeb;}
 .quest-report .metric p {grid-column:2 / -1; font-size:13px; margin:0; color:var(--text-secondary);}
-.quest-report .benchmark-conclusion {max-width:720px; margin-top:36px; padding-left:20px; border-left:2px solid var(--pink);}
-.quest-report .benchmark-conclusion h2 {font-size:24px;}
-.quest-report .report-stamp {font-size:10px; padding:10px 14px;}
+.quest-report .benchmark-conclusion {width:100%; min-width:0; margin-top:36px; padding:32px; border:1px solid var(--border); border-top:3px solid var(--pink); border-radius:0 0 12px 12px; background:linear-gradient(135deg,#efafcb0c,var(--panel) 65%);}
+.quest-report .benchmark-conclusion h2 {font-size:26px; margin:10px 0 20px;}
+.quest-report .benchmark-conclusion>p {display:block; width:100%; max-width:none; height:auto; margin:0; font-size:16px; line-height:2; white-space:normal; word-break:keep-all; overflow-wrap:anywhere; color:var(--text-secondary);}
+.conclusion-footer {display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; border-top:1px solid var(--border); margin-top:26px; padding-top:20px;}
+.conclusion-footer>strong {color:var(--pink); font-size:14px; line-height:1.8; word-break:keep-all;}
+.quest-report .report-stamp {font-size:10px; line-height:1.8; padding:8px 12px; margin:0; border-color:#efafcb66; border-radius:4px;}
 /* Capsule machine and ticket use different silhouettes. */
 .gacha-layout {display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:40px; align-items:center;}
 .quest-gacha .gacha-machine {width:100%; max-width:400px; margin:0 auto; box-shadow:4px 4px #100d1d; border-width:2px; padding:28px 20px;}
@@ -211,7 +234,8 @@
  .quest-report .metric strong {grid-column:2;}
  .quest-report .metric meter {grid-column:1 / -1; grid-row:2;}
  .quest-report .metric p {grid-column:1 / -1; font-size:13px;}
- .quest-report .benchmark-conclusion {padding-left:16px; margin-top:28px;}
+ .quest-report .benchmark-conclusion {padding:24px 20px; margin-top:28px;}
+ .quest-report .benchmark-conclusion>p {font-size:15px;}
  .gacha-layout {grid-template-columns:1fr; gap:32px;}
  .quest-gacha .gacha-machine {max-width:360px;}
  .quest-gacha .coupon {padding:28px 0;}
