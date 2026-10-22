@@ -89,8 +89,8 @@
 .synergy-verdict .eyebrow {color:var(--pink);}
 .synergy-verdict h3 {font-size:clamp(23px,3vw,30px); line-height:1.5; margin:12px 0; letter-spacing:-.6px; word-break:keep-all;}
 .quest-faker .synergy-verdict p {font-size:13px; color:var(--text-secondary); margin:0;}
-.quest-faker .analysis-lines {grid-column:1 / -1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:32px; width:100%; box-sizing:border-box; font-size:14px; line-height:1.85; margin:0; padding:0; list-style:none; counter-reset:synergy-line;}
-.quest-faker .analysis-lines li {display:grid; grid-template-columns:44px minmax(0,1fr); gap:14px; padding:22px 0; margin:0; border-top:1px solid #493b6170; border-bottom:0; word-break:keep-all; overflow-wrap:anywhere;}
+.quest-faker .analysis-lines {grid-column:1 / -1; display:grid; grid-template-columns:minmax(0,1fr); width:100%; box-sizing:border-box; font-size:15px; line-height:1.95; margin:0; padding:0; list-style:none;}
+.quest-faker .analysis-lines li {display:grid; grid-template-columns:44px minmax(0,1fr); gap:20px; padding:30px 0; margin:0; border-top:1px solid #493b6170; border-bottom:0; word-break:keep-all; overflow-wrap:anywhere;}
 .quest-faker .player-ping {display:inline-flex; align-items:center; gap:8px; color:var(--text-secondary); font-size:12px; line-height:1.6;}
 .player-ping img {width:26px; height:26px; object-fit:contain; flex-shrink:0;}
 .quest-faker .ping-button-icon {width:26px; height:26px; object-fit:contain;}
@@ -98,8 +98,12 @@
 .synergy-match-badge img {width:30px; height:30px; object-fit:contain;}
 .report-ping-icon {display:grid; place-items:center; width:44px; height:44px; background:linear-gradient(145deg,#3c334b,#211b35); border:1px solid var(--border); border-radius:10px; box-shadow:0 3px 10px #100d1d40;}
 .report-ping-icon img {width:32px; height:32px; object-fit:contain;}
-.report-ping-label {display:block; color:var(--yellow); font-size:11px; letter-spacing:.3px; margin-bottom:6px;}
-.quest-faker .analysis-lines li p {font-size:14px; line-height:1.85; color:var(--text-secondary); margin:0;}
+.quest-faker .report-ping-label {display:block; color:var(--yellow); font-size:18px; line-height:1.6; margin:6px 0 16px;}
+.analysis-entry {min-width:0;}
+.quest-faker .analysis-lines li p {font-size:15px; line-height:1.95; color:var(--text-secondary); margin:0 0 14px;}
+.quest-faker .analysis-lines .analysis-lead {color:var(--text); font-size:16px;}
+.analysis-lead strong {font-weight:600;}
+.quest-faker .analysis-lines .analysis-takeaway {margin:18px 0 0; padding:12px 16px; border-left:2px solid var(--pink); background:#30263f66; border-radius:0 6px 6px 0; font-size:14px;}
 /* Benchmark report: a tool header, table-like metric rows, separate conclusion. */
 .quest-report .benchmark-intro {display:grid; grid-template-columns:minmax(0,1fr) auto; gap:24px; align-items:center; margin:0 0 32px; padding:28px; border:1px solid var(--border); border-top:3px solid #acbdeb; background:var(--panel);}
 .quest-report .benchmark-intro p {font-size:14px; color:var(--text-secondary);}
@@ -198,6 +202,9 @@
  .quest-faker .synergy-score {padding:0; border:0;}
  .synergy-verdict {text-align:center;}
  .quest-faker .analysis-lines {grid-template-columns:minmax(0,1fr);}
+ .quest-faker .analysis-lines li {gap:12px; padding:24px 0;}
+ .quest-faker .analysis-lines li p {font-size:14px;}
+ .quest-faker .analysis-lines .analysis-lead {font-size:15px;}
  .quest-report .benchmark-intro {padding:22px;}
  .quest-report .benchmark-results {padding:0;}
  .quest-report .metric {grid-template-columns:1fr auto; gap:12px;}
