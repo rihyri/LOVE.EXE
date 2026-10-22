@@ -1,6 +1,12 @@
 ﻿import { useState } from 'react';
 import { places } from '../data/content';
 import { useProgress } from '../state/ProgressContext';
+import placeBackground from '../img/place_bg.jpeg';
+import placeOne from '../img/place_1.jpg';
+import placeTwo from '../img/place_2.jpg';
+import placeThree from '../img/place_3.jpg';
+
+const placeImages = [placeOne, placeTwo, placeThree];
 
 export function DatesQuest() {
  const [visited, setVisited] = useState<number[]>([]);
@@ -33,6 +39,8 @@ export function DatesQuest() {
      <strong>{place.name}</strong><span>{place.venue}</span>
     </button>)}</div>
    </div>
+   <div className="date-details">
+    <img className="date-photo" src={selected === null ? placeBackground : placeImages[selected]} alt={selected === null ? '우리의 데이트 추억' : `${places[selected].name} 장소 사진`} />
    {selected !== null ? <article className="date-notes result-panel" aria-live="polite">
     <span className="eyebrow">MEMORY 0{selected + 1}</span>
     <h2>{places[selected].name}</h2>
@@ -40,7 +48,8 @@ export function DatesQuest() {
     <p className="address">{places[selected].address}</p>
     <a className="text-button" href={`https://map.naver.com/p/search/${encodeURIComponent(places[selected].venue)}`} target="_blank" rel="noreferrer">지도에서 장소 찾아보기 ↗ (새 창)</a>
    </article> : <div className="date-notes date-empty"><span className="eyebrow">EXPLORATION LOG</span><p>장소를 선택해 추억을 열어보세요.</p></div>}
+   </div>
   </div>
-  <p className="muted">지도는 새 창에서 확인할 수 있습니다. 장소 사진은 추후 우리의 사진으로 채울 예정입니다.</p>
+  <p className="muted">지도는 새 창에서 확인할 수 있습니다.</p>
  </>;
 }

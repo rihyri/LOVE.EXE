@@ -1,4 +1,4 @@
-﻿/* Shared page rhythm. The title screen and character artwork are excluded. */
+/* Shared page rhythm. The title screen and character artwork are excluded. */
 :is(.hub,.quest-page,.ending-page) {
  --space-section:40px;
  --text-secondary:#c8bbd5;
@@ -53,6 +53,8 @@
 .hub .text-button {font-size:12px; padding-top:0;}
 /* Date exploration: abstract route, compact place index, readable field notes. */
 .dates-layout {display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:40px; align-items:start;}
+.date-details {min-width:0;}
+.date-photo {display:block; width:100%; aspect-ratio:4 / 3; object-fit:cover; border:1px solid var(--border); margin-bottom:24px;}
 .memory-map {position:relative; height:260px; background:#211b35; border:1px solid var(--border); overflow:hidden;}
 .memory-map>svg {width:100%; height:100%;}
 .memory-map .map-caption {position:absolute; left:18px; top:14px; color:var(--muted); font:10px var(--pixel);}
@@ -79,13 +81,25 @@
 .quest-faker .duo-grid h2 {font-size:30px;}
 .quest-faker .duo-cross {color:var(--pink); font-size:24px;}
 .quest-faker>.muted {margin:20px 0 24px;}
-.quest-faker .synergy-result {display:grid; grid-template-columns:180px minmax(0,1fr); gap:36px; margin-top:40px; padding:32px 0; background:none; border:0; border-top:1px solid var(--border);}
-.synergy-score {position:relative; align-self:start; padding:20px 0;}
-.synergy-score::before {content:''; position:absolute; width:110px; height:110px; left:8px; top:24px; border:1px solid var(--border); transform:rotate(45deg); z-index:-1;}
-.quest-faker .synergy-score .big-score {font-size:54px!important; margin-top:20px;}
-.quest-faker .analysis-lines {font-size:15px; line-height:1.95; margin:0; padding-left:24px;}
-.quest-faker .analysis-lines li {padding:0 0 12px 4px; margin:0 0 12px; border-bottom:1px solid #493b6170;}
-.quest-faker .analysis-lines li::marker {color:var(--pink); font-size:12px;}
+.quest-faker .synergy-result {display:grid; grid-template-columns:minmax(180px,.8fr) minmax(0,1.6fr); gap:32px 40px; margin:40px auto 0; padding:36px 0; background:none; border:0; border-top:2px solid var(--pink);}
+.quest-faker .synergy-score {align-self:center; text-align:center; padding:12px 24px 12px 0; border-right:1px solid var(--border);}
+.quest-faker .synergy-score .big-score {font-size:clamp(64px,7vw,84px)!important; line-height:1.2; margin:14px 0 0; white-space:nowrap;}
+.quest-faker .synergy-score .big-score small {font-size:16px;}
+.synergy-verdict {align-self:center;}
+.synergy-verdict .eyebrow {color:var(--pink);}
+.synergy-verdict h3 {font-size:clamp(23px,3vw,30px); line-height:1.5; margin:12px 0; letter-spacing:-.6px; word-break:keep-all;}
+.quest-faker .synergy-verdict p {font-size:13px; color:var(--text-secondary); margin:0;}
+.quest-faker .analysis-lines {grid-column:1 / -1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:32px; width:100%; box-sizing:border-box; font-size:14px; line-height:1.85; margin:0; padding:0; list-style:none; counter-reset:synergy-line;}
+.quest-faker .analysis-lines li {display:grid; grid-template-columns:44px minmax(0,1fr); gap:14px; padding:22px 0; margin:0; border-top:1px solid #493b6170; border-bottom:0; word-break:keep-all; overflow-wrap:anywhere;}
+.quest-faker .player-ping {display:inline-flex; align-items:center; gap:8px; color:var(--text-secondary); font-size:12px; line-height:1.6;}
+.player-ping img {width:26px; height:26px; object-fit:contain; flex-shrink:0;}
+.quest-faker .ping-button-icon {width:26px; height:26px; object-fit:contain;}
+.synergy-match-badge {display:inline-flex; align-items:center; gap:10px; color:var(--yellow); font-size:11px; letter-spacing:.5px;}
+.synergy-match-badge img {width:30px; height:30px; object-fit:contain;}
+.report-ping-icon {display:grid; place-items:center; width:44px; height:44px; background:linear-gradient(145deg,#3c334b,#211b35); border:1px solid var(--border); border-radius:10px; box-shadow:0 3px 10px #100d1d40;}
+.report-ping-icon img {width:32px; height:32px; object-fit:contain;}
+.report-ping-label {display:block; color:var(--yellow); font-size:11px; letter-spacing:.3px; margin-bottom:6px;}
+.quest-faker .analysis-lines li p {font-size:14px; line-height:1.85; color:var(--text-secondary); margin:0;}
 /* Benchmark report: a tool header, table-like metric rows, separate conclusion. */
 .quest-report .benchmark-intro {display:grid; grid-template-columns:minmax(0,1fr) auto; gap:24px; align-items:center; margin:0 0 32px; padding:28px; border:1px solid var(--border); border-top:3px solid #acbdeb; background:var(--panel);}
 .quest-report .benchmark-intro p {font-size:14px; color:var(--text-secondary);}
@@ -180,10 +194,10 @@
  .quest-faker .duo-grid h2 {font-size:24px;}
  .quest-faker .duo-grid p {font-size:13px;}
  .quest-faker .duo-grid .eyebrow {font-size:9px;}
- .quest-faker .synergy-result {grid-template-columns:1fr; padding:24px 0; gap:20px;}
- .synergy-score {display:flex; align-items:center; justify-content:space-between; gap:20px;}
- .synergy-score::before {display:none;}
- .quest-faker .synergy-score .big-score {margin:0; font-size:44px!important;}
+ .quest-faker .synergy-result {grid-template-columns:minmax(0,1fr); padding:28px 0; gap:24px;}
+ .quest-faker .synergy-score {padding:0; border:0;}
+ .synergy-verdict {text-align:center;}
+ .quest-faker .analysis-lines {grid-template-columns:minmax(0,1fr);}
  .quest-report .benchmark-intro {padding:22px;}
  .quest-report .benchmark-results {padding:0;}
  .quest-report .metric {grid-template-columns:1fr auto; gap:12px;}
@@ -208,3 +222,5 @@
  :is(.quest-page,.hub,.ending-page,.placeholder) .pixel-button:active {transform:none;}
  .reward-reveal {animation:none;}
 }
+
+.quest-faker .faker-player-photo {display:block; width:90%; height:auto; margin:0 auto 20px; border-radius:8px;}
